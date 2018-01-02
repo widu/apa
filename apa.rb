@@ -1,7 +1,4 @@
-require 'linkeddata'
-require 'rdf_to_graphviz'
-require 'rdf_rules_engine'
-require 'xls_to_rdf'
+
 
 require 'tk'
 require 'tkextlib/tile'
@@ -9,7 +6,8 @@ require 'tkextlib/tile'
 
 
 #load "lib/RdfProcess.rb"
-load "../rdf_process/Rdf_Process.rb"
+load "../rdf_process/lib/Rdf_Process.rb"
+require 'rdf_process'
 # load definition
 # load 'process_definition.rb'
 # load 'process_definition.rb'
