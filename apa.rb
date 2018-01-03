@@ -6,7 +6,7 @@ require 'tkextlib/tile'
 
 
 #load "lib/RdfProcess.rb"
-load "../rdf_process/lib/Rdf_Process.rb"
+# load "../rdf_process/lib/Rdf_Process.rb"
 require 'rdf_process'
 # load definition
 # load 'process_definition.rb'
