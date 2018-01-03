@@ -7,9 +7,12 @@ APA
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 1. Clone or save the project
 2. Install gems:
-	* tk (gem install "tk")
-	* rdf_process (gem install "rdf_process")
+	* [tk](https://rubygems.org/gems/tk) (gem install "tk")
+	* [rdf_process](https://rubygems.org/gems/rdf_process) (gem install "rdf_process")
 3. In the project catalog run command "ruby apa.rb"
+4. From apa intrface load file (File->Open process..) "FaktsPresentation.process" from folder "./example/FaktsPresentation"
+5. Run Process
+6. Click on "eye" icon 
 
 ### Prerequisites
 

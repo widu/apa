@@ -1,0 +1,43 @@
+@prefix grvz: 	<http://vieslav.pl/grvz#> .
+@prefix wd: 	<http://vieslav.pl/RulesToGraphviz#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix online: <http://vieslav.pl/online#> .
+@prefix wdc:    <http://vieslav.pl/csv/0.1/> .
+@prefix wdp:    <http://vieslav.pl/process/0.1/> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+_:VarPrefix a wdp:RuntimeVariable;
+wdp:name 'prefix';
+a wdp:Prefix;
+wdp:value ''' PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+			PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+			PREFIX owl:    <http://www.w3.org/2002/07/owl#> 
+			PREFIX grvz: 	<http://vieslav.pl/grvz#> 
+			PREFIX wd:  	<http://vieslav.pl/RulesToGraphviz#> 
+			PREFIX online:  <http://vieslav.pl/online#> 
+			PREFIX wdc:     <http://vieslav.pl/csv/0.1/>
+			PREFIX wdp:    <http://vieslav.pl/process/0.1/> . \n  '''  .
+
+
+_:VarGraph a wdp:RuntimeVariable;
+wdp:name 'graph';
+a wdp:Graph .
+
+_:VarExcel1 a wdp:RuntimeVariable;
+wdp:name 'excel1';
+a wdp:InputFile;
+wdp:value "/interfaces/zleznosci3.xlsx" .
+
+_:Step1 a wdp:Step;
+a wdp:ConverterXlsToRdf;
+wdp:name "Step 1";
+wdp:description "Loading data from excel";
+wdp:xlsOptionsValue '{ :sheets => ["Interfaces", "BackLog"] }';
+wdp:output  _:VarGraph;
+wdp:input_file _:VarExcel1 .
+
+_:Process a wdp:Process;
+wdp:name 'Demo process';
+wdp:prefix _:VarPrefix;
+wdp:firstStep _:Step1.

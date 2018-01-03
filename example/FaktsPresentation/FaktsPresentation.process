@@ -1,0 +1,34 @@
+#Step1
+addStep "GraphLoader" do
+	step_id "step1"
+	name "Loading ttl file"
+	output_vrbl "res2"
+	file_vrbl "ttl_file", "input_file",  File.dirname(file) + "/ttl/proc_def.ttl"
+end
+
+#Step2
+addStep "Filtr" do
+	step_id "step2"
+	name "Filtering graph for Graphviz presentation"
+	prefix_vrbl "prefix", "PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+		PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+		PREFIX owl:    <http://www.w3.org/2002/07/owl#> 
+		PREFIX grvz: 	<http://vieslav.pl/grvz#> 
+		PREFIX wd:  	<http://vieslav.pl/RulesToGraphviz#> 
+		PREFIX online:  <http://vieslav.pl/online#> 
+		PREFIX wdc:     <http://vieslav.pl/csv/0.1/>
+		PREFIX wdp:    <http://vieslav.pl/process/0.1/>  \n"
+	input_vrbl "res2"
+	output_vrbl "res3"
+	filtr_vrbl "filtr1", "CONSTRUCT { ?s ?p ?o . } WHERE { ?s ?p ?o .}"
+	depends_on  "step1"
+end
+
+#Step3
+addStep "RdfToGraphviz" do
+	step_id "step3"
+	name "Generating graphviz image"
+	input_vrbl "res3"
+	output_file_vrbl  "output1", "res_graph1.png"
+	depends_on  "step2"
+end
