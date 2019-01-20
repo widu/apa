@@ -283,14 +283,14 @@ class Controller
 		# należy usunąć z frama stary proces
 		# @proc.fresh_status = 'old'
 		@proc_info.value = "Process: #{file} - Steps: #{@proc.runtime_list.size}"
-		file.gsub!(/\.\w+$/, ".variables")
+		# file.gsub!(/\.\w+$/, ".variables")
 		
 
 		disp_process
 
-		@proc.eval_file(file) if File::exists?( file )
+		# @proc.eval_file(file) if File::exists?( file )
 
-		disp_fresh_status
+		# disp_fresh_status
 	end
 	def run_process
 		image_run = TkPhotoImage.new
